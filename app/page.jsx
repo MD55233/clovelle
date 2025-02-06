@@ -1,35 +1,39 @@
+import Features from "@/components/common/Features";
+import MarqueeSection2 from "@/components/common/MarqueeSection2";
 import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
-import Topbar from "@/components/headers/Topbar";
-import BannerCollection from "@/components/homes/home-1/BannerCollection";
-import BannerCountdown from "@/components/homes/home-1/BannerCountdown";
-import Blogs from "@/components/common/Blogs";
-import Collections from "@/components/homes/home-1/Collections";
-import Features from "@/components/common/Features";
-import Hero from "@/components/homes/home-1/Hero";
-import Products from "@/components/common/Products3";
-import ShopGram from "@/components/common/ShopGram";
-import Testimonials from "@/components/common/Testimonials";
+import Topbar5 from "@/components/headers/Topbar5";
+import Categories from "@/components/homes/jewelry-02/Categories";
+import Collections from "@/components/homes/jewelry-02/Collections";
+import Hero from "@/components/homes/jewelry-02/Hero";
+import NewsLetter from "@/components/homes/jewelry-02/NewsLetter";
+import Products1 from "@/components/homes/jewelry-02/Products";
+import Products2 from "@/components/homes/jewelry-02/Products2";
+import Shopgram from "@/components/homes/jewelry-02/Shopgram";
+import Testimonials from "@/components/homes/jewelry-02/Testimonials";
+import React from "react";
 
 export const metadata = {
-  title: "Home || Modave - Multipurpose React Nextjs eCommerce Template",
+  title:
+    "Home Jewelry 02 || Modave - Multipurpose React Nextjs eCommerce Template",
   description: "Modave - Multipurpose React Nextjs eCommerce Template",
 };
 
-export default function Home() {
+export default function page() {
   return (
     <>
-      <Topbar />
+      <Topbar5 parentClass="tf-topbar style-2 line-bt" />
       <Header1 />
       <Hero />
+      <Categories />
+      <Products1 parentClass="flat-spacing pt-0" />
       <Collections />
-      <Products />
-      <BannerCollection />
-      <BannerCountdown />
+      <Products2 parentClass="flat-spacing" />
       <Testimonials />
-      <Blogs />
-      <ShopGram />
-      <Features />
+      <Features parentClass="flat-spacing line-top-containe pt-0" />
+      <Shopgram />
+      <MarqueeSection2 />
+      <NewsLetter />
       <Footer1 />
     </>
   );

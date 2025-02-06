@@ -15,14 +15,14 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Home Jewelry 02 || Modave - Multipurpose React Nextjs eCommerce Template",
+    "Clovelle Official: Premium Jewelry at your doorstep",
   description: "Modave - Multipurpose React Nextjs eCommerce Template",
 };
 
 export default function page() {
   return (
     <>
-      <Topbar5 parentClass="tf-topbar style-2 line-bt" />
+
       <Header1 />
       <Hero />
       <Categories />

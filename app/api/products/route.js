@@ -1,5 +1,5 @@
 import { connectDB } from "@/utils/db";
-import Product from "@/models/product";
+import { Product } from "@/models/product";
 import { NextResponse } from "next/server";
 
 // GET /api/products (Fetch all products)

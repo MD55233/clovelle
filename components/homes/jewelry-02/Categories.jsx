@@ -8,6 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
+  const IMAGE_HOST_LINK = process.env.NEXT_PUBLIC_IMAGE_HOST_LINK || "";
 
   useEffect(() => {
     async function fetchCategories() {
@@ -46,20 +47,48 @@ export default function Categories() {
               <SwiperSlide key={category._id}>
                 <div className="collection-circle hover-img">
                   <Link href={`/shop/${category.slug}`} className="img-style radius-48">
-                    <Image src={category.image} alt={category.name} width={286} height={285} />
+                    <div className="image-container">
+                      <Image 
+                        src={`${IMAGE_HOST_LINK}${category.image}`} 
+                        alt={category.name} 
+                        width={150} 
+                        height={150} 
+                        style={{ objectFit: "cover" }} 
+                      />
+                    </div>
                   </Link>
-                  <div className="collection-content text-center">
-                    <Link href={`/shop/${category.slug}`} className="cls-title">
-                      <h6 className="text">{category.name}</h6>
-                      <i className="icon icon-arrowUpRight" />
-                    </Link>
-                  </div>
+                  <p className="category-name">{category.name}</p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </div>
+      <style jsx>{`
+        .image-container {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto; /* Centers the container */
+        }
+
+        .category-name {
+          text-align: center;
+          margin-top: 10px;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        .collection-circle {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      `}</style>
     </section>
   );
 }

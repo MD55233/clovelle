@@ -16,7 +16,7 @@ import React from "react";
 export const metadata = {
   title:
     "Clovelle Official: Premium Jewelry at your doorstep",
-  description: "Modave - Multipurpose React Nextjs eCommerce Template",
+  description: "Clovelle Official: Premium Jewelry at your doorstep",
 };
 
 export default function page() {

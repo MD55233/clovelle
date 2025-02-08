@@ -191,7 +191,7 @@ export default function ShopCart() {
                                   setQuantity(elm.id, elm.quantity - 1)
                                 }
                               >
-                                -
+                                
                               </span>
                               <input
                                 type="text"

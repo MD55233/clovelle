@@ -1,11 +1,30 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import ProductCard1 from "@/components/productCards/ProductCard1";
-import { products15 } from "@/data/products";
-import React from "react";
-import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
-export default function Products1({ parentClass = "" }) {
+export default function Products4({ parentClass = "" }) {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const IMAGE_HOST_LINK = process.env.NEXT_PUBLIC_IMAGE_HOST_LINK || "";
+
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      try {
+        const res = await fetch("/api/products"); // Fetch products from API
+        const data = await res.json();
+
+        // Filter only featured products
+        const filteredProducts = data.filter((product) => product.isFeatured);
+        setFeaturedProducts(filteredProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchFeaturedProducts();
+  }, []);
+
   return (
     <section className={parentClass}>
       <div className="container">
@@ -21,23 +40,31 @@ export default function Products1({ parentClass = "" }) {
           spaceBetween={15}
           breakpoints={{
             0: { slidesPerView: 2, spaceBetween: 15 },
-
             768: { slidesPerView: 3, spaceBetween: 30 },
             1200: { slidesPerView: 4, spaceBetween: 30 },
           }}
           modules={[Pagination]}
           pagination={{
             clickable: true,
-            el: ".spd62",
+            el: ".spd58",
           }}
         >
-          {products15.slice(0, 4).map((product, i) => (
-            <SwiperSlide key={i} className="swiper-slide">
-              <ProductCard1 product={product} />
+          {featuredProducts.length > 0 ? (
+            featuredProducts.map((product) => (
+              <SwiperSlide key={product._id} className="swiper-slide">
+              <ProductCard1 
+                product={{ 
+                  ...product, 
+                  image: product.images?.length > 0 ? `${IMAGE_HOST_LINK}${product.images[0].url}` : "/default-image.jpg" 
+                }} 
+              />
             </SwiperSlide>
-          ))}
-
-          <div className="sw-pagination-latest sw-dots type-circle justify-content-center spd62" />
+            
+            ))
+          ) : (
+            <p className="text-center">No featured products available.</p>
+          )}
+          <div className="sw-pagination-latest sw-dots type-circle justify-content-center spd58" />
         </Swiper>
       </div>
     </section>

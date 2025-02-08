@@ -4,7 +4,7 @@ const categorySchema = new Schema(
     {
         // Basic Details
         name: { type: String, required: true, unique: true, trim: true },
-        slug: { type: String, unique: true, index: true }, // Unique, SEO-friendly slug
+        slug: { type: String, unique: true }, // Unique, SEO-friendly slug
         description: { type: String },
         image: { type: String }, // Category banner/image
 
